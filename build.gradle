@@ -1,0 +1,48 @@
+//Dependencias
+
+plugins {
+    id 'java'
+}
+
+group 'RestAssured-Groovy'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral{
+
+    }
+}
+
+dependencies{
+    
+    
+
+// https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+testImplementation 'io.rest-assured:rest-assured:4.5.1'
+
+
+   // https://mvnrepository.com/artifact/org.testng/testng
+testImplementation 'org.testng:testng:7.6.0'
+
+
+// https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator
+testImplementation 'io.rest-assured:json-schema-validator:4.5.1'
+
+
+
+
+}
+
+//ejecutar tags desde la terminal
+test{
+    useTestNG(){
+        testLogging.showStandardStreams = true
+        useDefaultListeners  = true
+        reports.html.required = false
+        parallel = "tests"
+        includeGroups 'Smoke'
+
+    }
+}
